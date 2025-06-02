@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>I AM MUSIC - Landing Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I AM MUSIC - Connessioni per il mondo musicale</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -124,6 +124,38 @@
     .show-en [data-lang="en"] {
       display: block;
     }
+
+    .image-container {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .image-container img {
+      width: 90%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 255, 195, 0.3);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .countdown {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 2rem;
+      color: var(--primary);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
   </style>
 </head>
 <body>
@@ -139,6 +171,9 @@
   <section data-lang="it">
     <h2>Visione</h2>
     <p>Creare una piattaforma che connetta professionisti musicali in modo semplice, veloce e geolocalizzato.</p>
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?fit=crop&w=1000&q=80" alt="Collaborazione musicale">
+    </div>
 
     <h2>Missione</h2>
     <ul>
@@ -146,6 +181,9 @@
       <li>Facilitare collaborazioni creative</li>
       <li>Connettere business e musica</li>
     </ul>
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?fit=crop&w=1000&q=80" alt="Missione musicale">
+    </div>
 
     <h2>Come funziona</h2>
     <ul>
@@ -153,6 +191,9 @@
       <li>Scopri utenti e eventi intorno a te</li>
       <li>Contatta, collabora, crea</li>
     </ul>
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1497032205916-ac775f0649ae?fit=crop&w=1000&q=80" alt="Funzionalità dell'app">
+    </div>
 
     <h2>Funzionalità Principali</h2>
     <ul>
@@ -162,6 +203,9 @@
       <li>Marketplace e servizi musicali</li>
       <li>Eventi sincronizzati (anche con Eventbrite)</li>
     </ul>
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?fit=crop&w=1000&q=80" alt="Funzionalità principali">
+    </div>
 
     <h2>Categorie</h2>
     <ul>
@@ -171,6 +215,9 @@
       <li>Studi Musicali</li>
       <li>Manager e Talent Scout</li>
     </ul>
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754?fit=crop&w=1000&q=80" alt="Categorie professionali">
+    </div>
 
     <h2>Perché scegliere I AM MUSIC?</h2>
     <ul>
@@ -178,6 +225,9 @@
       <li>Focus sulla community e il talento locale</li>
       <li>Opportunità concrete per emergere</li>
     </ul>
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?fit=crop&w=1000&q=80" alt="Vantaggi dell'app">
+    </div>
 
     <h2>Timeline</h2>
     <p>Lancio Beta previsto per Agosto 2025</p>
@@ -188,12 +238,19 @@
       <li><strong>Come trovo collaboratori?</strong> Con la mappa e il sistema di match intelligente.</li>
     </ul>
 
+    <div class="countdown" id="countdown">
+      Countdown al lancio: <span id="timer"></span>
+    </div>
+
     <a class="btn" href="#">Scarica l'app (Presto disponibile)</a>
   </section>
 
   <section data-lang="en">
     <h2>Vision</h2>
     <p>Create a platform that connects music professionals simply, quickly, and by location.</p>
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?fit=crop&w=1000&q=80" alt="Music Collaboration">
+    </div>
 
     <h2>Mission</h2>
     <ul>
@@ -201,73 +258,14 @@
       <li>Enable creative collaborations</li>
       <li>Bridge business and music</li>
     </ul>
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?fit=crop&w=1000&q=80" alt="Music Mission">
+    </div>
 
     <h2>How it works</h2>
     <ul>
       <li>Create a profile with bio, audio/video and skills</li>
       <li>Find users and events nearby</li>
-      <li>Connect, collaborate, create</li>
-    </ul>
-
-    <h2>Main Features</h2>
-    <ul>
-      <li>Map-based geolocation</li>
-      <li>User matchmaking</li>
-      <li>Professional profiles and chat</li>
-      <li>Service marketplace</li>
-      <li>Event integration (including Eventbrite)</li>
-    </ul>
-
-    <h2>User Categories</h2>
-    <ul>
-      <li>Beat Makers</li>
-      <li>Artists</li>
-      <li>Videomakers / Photographers</li>
-      <li>Music Studios</li>
-      <li>Managers and Talent Scouts</li>
-    </ul>
-
-    <h2>Why choose I AM MUSIC?</h2>
-    <ul>
-      <li>Unique innovation with geolocation</li>
-      <li>Focus on community and local talent</li>
-      <li>Real opportunities to grow</li>
-    </ul>
-
-    <h2>Timeline</h2>
-    <p>Beta launch expected in August 2025</p>
-
-    <h2>FAQ</h2>
-    <ul>
-      <li><strong>Is it free?</strong> Yes, with optional premium features.</li>
-      <li><strong>How do I find collaborators?</strong> Using the map and smart matching system.</li>
-    </ul>
-
-    <a class="btn" href="#">Download the app (Coming soon)</a>
-  </section>
-
-  <footer>
-    &copy; 2025 I AM MUSIC. Tutti i diritti riservati.<br>
-    Creato da <strong>Beyene Cecere</strong> e <strong>Tizazu Paladino</strong> · Programmatore: <strong>Tizazu Paladino</strong>
-  </footer>
-
-  <script>
-    const btnIT = document.getElementById("btn-it");
-    const btnEN = document.getElementById("btn-en");
-    const body = document.body;
-
-    btnIT.addEventListener("click", () => {
-      body.classList.remove("show-en");
-      btnIT.classList.add("active");
-      btnEN.classList.remove("active");
-    });
-
-    btnEN.addEventListener("click", () => {
-      body.classList.add("show-en");
-      btnEN.classList.add("active");
-      btnIT.classList.remove("active");
-    });
-  </script>
-
-</body>
-</html>
+      <li>Connect,
+::contentReference[oaicite:0]{index=0}
+ 
