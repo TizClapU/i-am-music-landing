@@ -1,175 +1,273 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>I AM MUSIC - Connessioni per il mondo musicale</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I AM MUSIC - Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #00ffc3;
+      --bg: #0f0f0f;
+      --text: #fff;
+      --secondary: #1e1e1e;
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
-      color: #fff;
+      background: linear-gradient(to bottom right, var(--bg), var(--secondary));
+      color: var(--text);
       padding: 2rem;
-      overflow-x: hidden;
+      line-height: 1.7;
     }
 
     header {
       text-align: center;
-      margin: 2rem 0;
-      animation: fadeInDown 1s ease-out;
+      margin-bottom: 2rem;
     }
 
-    h1 {
-      font-size: 3.5rem;
-      color: #00ffc3;
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--primary);
+      animation: fadeInDown 1s ease;
+    }
+
+    .lang-toggle {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .lang-toggle button {
+      background: none;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .lang-toggle button.active,
+    .lang-toggle button:hover {
+      background: var(--primary);
+      color: #000;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      animation: fadeInUp 1s ease;
+    }
+
+    h2 {
+      font-size: 2rem;
       margin-bottom: 1rem;
+      color: var(--primary);
     }
 
-    p {
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
-      color: #ddd;
-    }
-
-    .image-container {
-      display: flex;
-      justify-content: center;
-      margin: 2rem 0;
-      animation: zoomIn 1s ease;
-    }
-
-    .image-container img {
-      width: 90%;
-      max-width: 500px;
-      border-radius: 15px;
-      box-shadow: 0 0 25px rgba(0, 255, 195, 0.3);
+    ul {
+      margin-left: 1.5rem;
     }
 
     .btn {
       display: inline-block;
-      margin: 2rem auto;
-      padding: 1rem 2rem;
-      background: #00ffc3;
+      background-color: var(--primary);
       color: #000;
-      border: none;
-      border-radius: 50px;
+      padding: 1rem 2rem;
       font-weight: bold;
-      font-size: 1.1rem;
-      cursor: pointer;
+      border-radius: 8px;
       text-decoration: none;
-      transition: 0.3s ease;
-      animation: fadeInUp 1s ease-out;
+      margin: 2rem auto;
+      display: block;
+      width: fit-content;
+      transition: 0.3s;
     }
 
     .btn:hover {
       background-color: #00cda3;
-      transform: scale(1.05);
-    }
-
-    .map-section {
-      margin: 4rem 0;
-      text-align: center;
-    }
-
-    .map-section h2 {
-      font-size: 2rem;
-      color: #00ffc3;
-      margin-bottom: 1rem;
-    }
-
-    #map {
-      width: 100%;
-      height: 400px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,255,195,0.2);
     }
 
     footer {
-      margin-top: 4rem;
       text-align: center;
-      font-size: 0.9rem;
+      margin-top: 4rem;
+      font-size: 0.85rem;
       color: #aaa;
     }
 
-    .credits {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: #666;
-    }
-
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-50px); }
+      from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes zoomIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    [data-lang="en"] {
+      display: none;
+    }
+
+    .show-en [data-lang="it"] {
+      display: none;
+    }
+
+    .show-en [data-lang="en"] {
+      display: block;
     }
   </style>
-  <!-- MAP API -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-  <script>
-    function initMap() {
-      const center = { lat: 45.4642, lng: 9.1900 }; // Milano default
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12,
-        center: center,
-        styles: [/* puoi inserire qui uno stile dark se vuoi */]
-      });
-
-      // ESEMPIO: Marker utente
-      new google.maps.Marker({
-        position: { lat: 45.465, lng: 9.19 },
-        map: map,
-        title: "Producer vicino a te"
-      });
-
-      // QUI: Integrazione futura Eventbrite con marker personalizzati
-    }
-    window.onload = initMap;
-  </script>
 </head>
 <body>
+
   <header>
-    <h1>I AM MUSIC</h1>
-    <p>
-      La piattaforma per connettere artisti, producer, videomaker, manager e talenti emergenti. 
-      Scopri eventi musicali, crea collaborazioni e sviluppa il tuo potenziale creativo.
-    </p>
+    <div class="logo">I AM MUSIC</div>
+    <div class="lang-toggle">
+      <button class="active" id="btn-it">IT</button>
+      <button id="btn-en">EN</button>
+    </div>
   </header>
 
-  <div class="image-container">
-    <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?fit=crop&w=1000&q=80" alt="Music Collaboration">
-  </div>
+  <section data-lang="it">
+    <h2>Visione</h2>
+    <p>Creare una piattaforma che connetta professionisti musicali in modo semplice, veloce e geolocalizzato.</p>
 
-  <div class="map-section">
-    <h2>Mappa Interattiva</h2>
-    <div id="map"></div>
-  </div>
+    <h2>Missione</h2>
+    <ul>
+      <li>Valorizzare i talenti emergenti</li>
+      <li>Facilitare collaborazioni creative</li>
+      <li>Connettere business e musica</li>
+    </ul>
 
-  <a href="#" class="btn">Scarica l'app (Presto disponibile)</a>
+    <h2>Come funziona</h2>
+    <ul>
+      <li>Crea un profilo con bio, audio/video e competenze</li>
+      <li>Scopri utenti e eventi intorno a te</li>
+      <li>Contatta, collabora, crea</li>
+    </ul>
+
+    <h2>Funzionalità Principali</h2>
+    <ul>
+      <li>Geolocalizzazione con mappa</li>
+      <li>Matchmaking tra utenti</li>
+      <li>Chat e profili professionali</li>
+      <li>Marketplace e servizi musicali</li>
+      <li>Eventi sincronizzati (anche con Eventbrite)</li>
+    </ul>
+
+    <h2>Categorie</h2>
+    <ul>
+      <li>Beat Maker</li>
+      <li>Artisti</li>
+      <li>Videomaker / Fotografi</li>
+      <li>Studi Musicali</li>
+      <li>Manager e Talent Scout</li>
+    </ul>
+
+    <h2>Perché scegliere I AM MUSIC?</h2>
+    <ul>
+      <li>Innovazione unica con geolocalizzazione</li>
+      <li>Focus sulla community e il talento locale</li>
+      <li>Opportunità concrete per emergere</li>
+    </ul>
+
+    <h2>Timeline</h2>
+    <p>Lancio Beta previsto per Agosto 2025</p>
+
+    <h2>FAQ</h2>
+    <ul>
+      <li><strong>È gratuita?</strong> Sì, con funzioni avanzate opzionali.</li>
+      <li><strong>Come trovo collaboratori?</strong> Con la mappa e il sistema di match intelligente.</li>
+    </ul>
+
+    <a class="btn" href="#">Scarica l'app (Presto disponibile)</a>
+  </section>
+
+  <section data-lang="en">
+    <h2>Vision</h2>
+    <p>Create a platform that connects music professionals simply, quickly, and by location.</p>
+
+    <h2>Mission</h2>
+    <ul>
+      <li>Empower emerging talent</li>
+      <li>Enable creative collaborations</li>
+      <li>Bridge business and music</li>
+    </ul>
+
+    <h2>How it works</h2>
+    <ul>
+      <li>Create a profile with bio, audio/video and skills</li>
+      <li>Find users and events nearby</li>
+      <li>Connect, collaborate, create</li>
+    </ul>
+
+    <h2>Main Features</h2>
+    <ul>
+      <li>Map-based geolocation</li>
+      <li>User matchmaking</li>
+      <li>Professional profiles and chat</li>
+      <li>Service marketplace</li>
+      <li>Event integration (including Eventbrite)</li>
+    </ul>
+
+    <h2>User Categories</h2>
+    <ul>
+      <li>Beat Makers</li>
+      <li>Artists</li>
+      <li>Videomakers / Photographers</li>
+      <li>Music Studios</li>
+      <li>Managers and Talent Scouts</li>
+    </ul>
+
+    <h2>Why choose I AM MUSIC?</h2>
+    <ul>
+      <li>Unique innovation with geolocation</li>
+      <li>Focus on community and local talent</li>
+      <li>Real opportunities to grow</li>
+    </ul>
+
+    <h2>Timeline</h2>
+    <p>Beta launch expected in August 2025</p>
+
+    <h2>FAQ</h2>
+    <ul>
+      <li><strong>Is it free?</strong> Yes, with optional premium features.</li>
+      <li><strong>How do I find collaborators?</strong> Using the map and smart matching system.</li>
+    </ul>
+
+    <a class="btn" href="#">Download the app (Coming soon)</a>
+  </section>
 
   <footer>
-    &copy; 2025 I AM MUSIC. Tutti i diritti riservati.
-    <div class="credits">
-      Creato da <strong>Beyene Cecere</strong> e <strong>Tizazu Paladino</strong> · Programmatore: <strong>Tizazu Paladino</strong>
-    </div>
+    &copy; 2025 I AM MUSIC. Tutti i diritti riservati.<br>
+    Creato da <strong>Beyene Cecere</strong> e <strong>Tizazu Paladino</strong> · Programmatore: <strong>Tizazu Paladino</strong>
   </footer>
+
+  <script>
+    const btnIT = document.getElementById("btn-it");
+    const btnEN = document.getElementById("btn-en");
+    const body = document.body;
+
+    btnIT.addEventListener("click", () => {
+      body.classList.remove("show-en");
+      btnIT.classList.add("active");
+      btnEN.classList.remove("active");
+    });
+
+    btnEN.addEventListener("click", () => {
+      body.classList.add("show-en");
+      btnEN.classList.add("active");
+      btnIT.classList.remove("active");
+    });
+  </script>
+
 </body>
 </html>
