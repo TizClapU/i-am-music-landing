@@ -334,18 +334,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    [data-lang="en"] {
-      display: none;
-    }
-
-    .show-en [data-lang="it"] {
-      display: none;
-    }
-
-    .show-en [data-lang="en"] {
-      display: block;
-    }
-
     /* Hero Section */
     .hero {
       height: 80vh;
@@ -402,6 +390,43 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin: 3rem 0;
+    }
+
+    /* Per schermi grandi, forziamo 3 colonne con il centrale più largo */
+    @media (min-width: 1200px) {
+      .roles-grid {
+        grid-template-columns: 1fr 1.2fr 1fr;
+        grid-template-rows: auto auto;
+      }
+      
+      /* Posizioniamo il Mastering Engineer al centro */
+      .role-card:nth-child(4) {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+      
+      /* Sistemiamo gli altri elementi attorno */
+      .role-card:nth-child(1), .role-card:nth-child(2) {
+        grid-row: 1;
+      }
+      
+      .role-card:nth-child(3), .role-card:nth-child(5) {
+        grid-row: 2;
+      }
+      
+      .role-card:nth-child(6), .role-card:nth-child(7) {
+        grid-row: 3;
+      }
+      
+      /* Rendiamo la card centrale più alta */
+      .role-card:nth-child(4) .role-image {
+        height: 250px;
+      }
+      
+      .role-card:nth-child(4) {
+        transform: scale(1.05);
+        z-index: 2;
+      }
     }
 
     .role-card {
@@ -820,6 +845,19 @@
         font-size: 1rem;
       }
     }
+
+    /* Language Toggle Styles */
+    [data-lang="en"] {
+      display: none;
+    }
+
+    body.show-en [data-lang="it"] {
+      display: none;
+    }
+
+    body.show-en [data-lang="en"] {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -843,7 +881,7 @@
     </div>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main Content - Italian -->
   <section data-lang="it" class="reveal">
     <h2>I Ruoli Professionali</h2>
     <p>Scopri come I AM MUSIC può rivoluzionare il tuo lavoro nel settore musicale, indipendentemente dal tuo ruolo.</p>
@@ -900,6 +938,23 @@
         </div>
       </div>
 
+      <!-- Mastering Engineer Card - CENTRALE -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mastering Engineer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Mastering Engineer</h3>
+          <p class="role-description">Offri i tuoi servizi di mastering a producer e artisti emergenti.</p>
+          <ul class="role-features">
+            <li>Profilo professionale</li>
+            <li>Portfolio audio</li>
+            <li>Recensioni verificate</li>
+            <li>Gestione ordini</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- Videomaker Card -->
       <div class="role-card">
         <div class="role-image">
@@ -947,23 +1002,6 @@
             <li>Licenze personalizzate</li>
             <li>Statistiche di vendita</li>
             <li>Collaborazioni dirette</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Mastering Engineer Card -->
-      <div class="role-card">
-        <div class="role-image">
-          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mastering Engineer">
-        </div>
-        <div class="role-content">
-          <h3 class="role-title">Mastering Engineer</h3>
-          <p class="role-description">Offri i tuoi servizi di mastering a producer e artisti emergenti.</p>
-          <ul class="role-features">
-            <li>Profilo professionale</li>
-            <li>Portfolio audio</li>
-            <li>Recensioni verificate</li>
-            <li>Gestione ordini</li>
           </ul>
         </div>
       </div>
@@ -1022,6 +1060,7 @@
     </a>
   </section>
 
+  <!-- Main Content - English -->
   <section data-lang="en" class="reveal" style="display:none">
     <h2>Professional Roles</h2>
     <p>Discover how I AM MUSIC can revolutionize your work in the music industry, regardless of your role.</p>
@@ -1078,6 +1117,23 @@
         </div>
       </div>
 
+      <!-- Mastering Engineer Card - CENTRAL -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mastering Engineer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Mastering Engineer</h3>
+          <p class="role-description">Offer your mastering services to producers and emerging artists.</p>
+          <ul class="role-features">
+            <li>Professional profile</li>
+            <li>Audio portfolio</li>
+            <li>Verified reviews</li>
+            <li>Order management</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- Videomaker Card -->
       <div class="role-card">
         <div class="role-image">
@@ -1125,23 +1181,6 @@
             <li>Custom licenses</li>
             <li>Sales statistics</li>
             <li>Direct collaborations</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Mastering Engineer Card -->
-      <div class="role-card">
-        <div class="role-image">
-          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mastering Engineer">
-        </div>
-        <div class="role-content">
-          <h3 class="role-title">Mastering Engineer</h3>
-          <p class="role-description">Offer your mastering services to producers and emerging artists.</p>
-          <ul class="role-features">
-            <li>Professional profile</li>
-            <li>Audio portfolio</li>
-            <li>Verified reviews</li>
-            <li>Order management</li>
           </ul>
         </div>
       </div>
@@ -1213,7 +1252,7 @@
   </footer>
 
   <script>
-    // Language Toggle
+    // Language Toggle - CORRETTO
     const btnIT = document.getElementById("btn-it");
     const btnEN = document.getElementById("btn-en");
     const body = document.body;
@@ -1222,12 +1261,18 @@
       body.classList.remove("show-en");
       btnIT.classList.add("active");
       btnEN.classList.remove("active");
+      
+      // Aggiorna il timer in italiano
+      updateCountdown();
     });
 
     btnEN.addEventListener("click", () => {
       body.classList.add("show-en");
       btnEN.classList.add("active");
       btnIT.classList.remove("active");
+      
+      // Aggiorna il timer in inglese
+      updateCountdown();
     });
 
     // Countdown Timer
@@ -1241,13 +1286,12 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      // Italian version
+      // Aggiorna entrambe le versioni
       document.getElementById("days").textContent = days.toString().padStart(2, '0');
       document.getElementById("hours").textContent = Math.floor(hours).toString().padStart(2, '0');
       document.getElementById("minutes").textContent = Math.floor(minutes).toString().padStart(2, '0');
       document.getElementById("seconds").textContent = Math.floor(seconds).toString().padStart(2, '0');
 
-      // English version
       document.getElementById("days-en").textContent = days.toString().padStart(2, '0');
       document.getElementById("hours-en").textContent = Math.floor(hours).toString().padStart(2, '0');
       document.getElementById("minutes-en").textContent = Math.floor(minutes).toString().padStart(2, '0');
@@ -1310,22 +1354,6 @@
       }
     }
 
-    // Parallax Effect for Images
-    function setupParallax() {
-      const img = document.getElementById('parallax-img');
-      const imgEn = document.getElementById('parallax-img-en');
-      
-      if (img && imgEn) {
-        window.addEventListener('mousemove', (e) => {
-          const x = (window.innerWidth / 2 - e.pageX) / 20;
-          const y = (window.innerHeight / 2 - e.pageY) / 20;
-          
-          img.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-          imgEn.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-        });
-      }
-    }
-
     // Scroll Reveal Animation
     function setupScrollReveal() {
       const reveals = document.querySelectorAll('.reveal');
@@ -1373,7 +1401,6 @@
     window.addEventListener('DOMContentLoaded', () => {
       createParticles();
       createVisualizer();
-      setupParallax();
       setupScrollReveal();
       setupRoleCards();
     });
