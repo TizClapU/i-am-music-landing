@@ -8,15 +8,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #00ffc3;
-      --primary-dark: #00cda3;
-      --bg: #0f0f0f;
-      --text: #fff;
-      --secondary: #1e1e1e;
-      --accent: #ff00aa;
-      --glow: 0 0 20px rgba(0, 255, 195, 0.5);
-      --card-bg: rgba(30, 30, 30, 0.7);
-    }
+  --primary: #b400f2;         /* viola acceso */
+  --primary-dark: #8a00c2;    /* viola scuro */
+  --bg: #0d0617;              /* sfondo molto scuro con tinta viola */
+  --text: #ffffff;
+  --secondary: #1a0e2a;       /* secondario con tono prugna */
+  --accent: #ff66cc;          /* rosa violaceo acceso */
+  --glow: 0 0 20px rgba(180, 0, 242, 0.5);
+  --card-bg: rgba(35, 20, 60, 0.7);
+}
 
     * {
       box-sizing: border-box;
@@ -1306,7 +1306,7 @@
         const posY = Math.random() * 100;
         const delay = Math.random() * 5;
         const duration = Math.random() * 15 + 5;
-        const color = `hsl(${Math.random() * 60 + 160}, 100%, ${Math.random() * 30 + 50}%)`;
+        const color = `hsl(${Math.random() * 30 + 270}, 100%, ${Math.random() * 30 + 50}%)`;
         
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
@@ -1333,7 +1333,7 @@
         const height = Math.random() * 100 + 20;
         const delay = Math.random() * 1.5;
         const duration = Math.random() * 1 + 0.5;
-        const color = `hsl(${Math.random() * 60 + 160}, 100%, ${Math.random() * 30 + 50}%)`;
+        const color = `hsl(${Math.random() * 30 + 270}, 100%, ${Math.random() * 30 + 50}%)`;
         
         bar.style.height = `${height}px`;
         bar.style.animationDelay = `${delay}s`;
