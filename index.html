@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>I AM MUSIC - Connessioni per il mondo musicale</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #00ffc3;
+      --primary-dark: #00cda3;
       --bg: #0f0f0f;
       --text: #fff;
       --secondary: #1e1e1e;
+      --accent: #ff00aa;
+      --glow: 0 0 20px rgba(0, 255, 195, 0.5);
     }
 
     * {
@@ -22,85 +26,274 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to bottom right, var(--bg), var(--secondary));
+      background: var(--bg);
       color: var(--text);
-      padding: 2rem;
       line-height: 1.7;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 255, 195, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 170, 0.1) 0%, transparent 20%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Particle background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-20px) translateX(10px); }
     }
 
     header {
       text-align: center;
-      margin-bottom: 2rem;
+      padding: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      filter: drop-shadow(var(--glow));
     }
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 4rem;
+      color: transparent;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      margin: 1rem 0;
+      position: relative;
+      display: inline-block;
+      animation: fadeInDown 1s ease, logoGlow 3s infinite alternate;
+    }
+
+    @keyframes logoGlow {
+      0% { text-shadow: 0 0 10px rgba(0, 255, 195, 0.3); }
+      100% { text-shadow: 0 0 20px rgba(0, 255, 195, 0.7), 0 0 30px rgba(255, 0, 170, 0.5); }
+    }
+
+    .logo::after {
+      content: 'CONNECT • CREATE • COLLABORATE';
+      position: absolute;
+      bottom: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 3px;
       color: var(--primary);
-      animation: fadeInDown 1s ease;
+      width: 100%;
+      text-align: center;
+      opacity: 0.8;
     }
 
     .lang-toggle {
       text-align: center;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
 
     .lang-toggle button {
       background: none;
       border: 2px solid var(--primary);
       color: var(--primary);
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1.5rem;
       margin: 0 0.5rem;
-      border-radius: 20px;
+      border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lang-toggle button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 195, 0.3), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .lang-toggle button:hover::before {
+      left: 100%;
     }
 
     .lang-toggle button.active,
     .lang-toggle button:hover {
       background: var(--primary);
       color: #000;
+      box-shadow: var(--glow);
     }
 
     section {
-      max-width: 900px;
-      margin: 2rem auto;
-      animation: fadeInUp 1s ease;
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      position: relative;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.7), rgba(15, 15, 15, 0.9));
+      border-radius: 15px;
+      z-index: -1;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: transparent;
+      background: linear-gradient(90deg, var(--primary), var(--text));
+      -webkit-background-clip: text;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
     }
 
     ul {
       margin-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    li::before {
+      content: '♫';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
     }
 
     .btn {
       display: inline-block;
-      background-color: var(--primary);
+      background: linear-gradient(45deg, var(--primary), var(--primary-dark));
       color: #000;
-      padding: 1rem 2rem;
+      padding: 1.2rem 2.5rem;
       font-weight: bold;
-      border-radius: 8px;
+      border-radius: 50px;
       text-decoration: none;
-      margin: 2rem auto;
+      margin: 3rem auto;
       display: block;
       width: fit-content;
-      transition: 0.3s;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(0, 255, 195, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.6s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
     }
 
     .btn:hover {
-      background-color: #00cda3;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 255, 195, 0.5);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
     }
 
     footer {
       text-align: center;
-      margin-top: 4rem;
-      font-size: 0.85rem;
+      margin-top: 6rem;
+      padding: 3rem 0;
+      font-size: 0.9rem;
       color: #aaa;
+      position: relative;
+      background: rgba(15, 15, 15, 0.8);
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
     }
 
     @keyframes fadeInDown {
@@ -125,40 +318,257 @@
       display: block;
     }
 
+    /* Advanced Image Container with Parallax */
     .image-container {
       text-align: center;
-      margin: 2rem 0;
+      margin: 3rem 0;
+      position: relative;
+      perspective: 1000px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .image-container img {
       width: 90%;
-      max-width: 500px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 255, 195, 0.3);
-      animation: fadeIn 2s ease-in-out;
+      max-width: 600px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 255, 195, 0.3);
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      position: relative;
+      z-index: 2;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .image-container::after {
+      content: '';
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, var(--primary), transparent 70%);
+      filter: blur(50px);
+      opacity: 0.3;
+      z-index: 1;
+      animation: pulseGlow 4s infinite alternate;
     }
 
+    @keyframes pulseGlow {
+      0% { opacity: 0.2; transform: scale(0.95); }
+      100% { opacity: 0.4; transform: scale(1.05); }
+    }
+
+    /* Countdown Styles */
     .countdown {
       text-align: center;
-      font-size: 2rem;
-      margin-top: 2rem;
-      color: var(--primary);
-      animation: pulse 2s infinite;
+      margin: 3rem 0;
+      position: relative;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+    .countdown-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .timer {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .timer-segment {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+
+    .timer-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--primary);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+      position: relative;
+      text-shadow: 0 0 10px rgba(0, 255, 195, 0.7);
+    }
+
+    .timer-number::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .timer-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #aaa;
+    }
+
+    /* Feature Cards */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(0, 255, 195, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      z-index: -1;
+      border-radius: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feature-card:hover::before {
+      opacity: 0.3;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(0, 255, 195, 0.3);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    /* Animated Wave Divider */
+    .wave-divider {
+      position: relative;
+      height: 100px;
+      overflow: hidden;
+      margin: 4rem 0;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%2300ffc3' opacity='.25'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' fill='%2300ffc3' opacity='.5'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%2300ffc3'/%3E%3C/svg%3E");
+      background-size: 50% 100%;
+      animation: wave 15s linear infinite;
+    }
+
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* 3D Card Effect */
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 2.5rem;
+      }
+      
+      .timer {
+        flex-wrap: wrap;
+      }
+      
+      .timer-segment {
+        min-width: 60px;
+      }
+      
+      .timer-number {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Music Visualizer Effect */
+    .visualizer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 2px;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    .bar {
+      width: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+      animation: equalizer 1.5s infinite ease-in-out;
+      transform-origin: bottom;
+    }
+
+    @keyframes equalizer {
+      0%, 100% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
     }
   </style>
 </head>
 <body>
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Music Visualizer Effect -->
+  <div class="visualizer" id="visualizer"></div>
 
   <header>
     <div class="logo">I AM MUSIC</div>
@@ -168,133 +578,265 @@
     </div>
   </header>
 
-  <section data-lang="it">
+  <section data-lang="it" class="reveal">
     <h2>Visione</h2>
-    <p>Creare una piattaforma che connetta professionisti musicali in modo semplice, veloce e geolocalizzato.</p>
+    <p>Creare una piattaforma rivoluzionaria che connetta professionisti musicali in modo semplice, veloce e geolocalizzato, trasformando il modo in cui la comunità musicale collabora e cresce.</p>
+    
     <div class="image-container">
-      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?fit=crop&w=1000&q=80" alt="Collaborazione musicale">
+      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?fit=crop&w=1000&q=80" alt="Collaborazione musicale" class="card-3d" id="parallax-img">
+    </div>
+
+    <div class="wave-divider">
+      <div class="wave"></div>
     </div>
 
     <h2>Missione</h2>
-    <ul>
-      <li>Valorizzare i talenti emergenti</li>
-      <li>Facilitare collaborazioni creative</li>
-      <li>Connettere business e musica</li>
-    </ul>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-star"></i></div>
+        <h3 class="feature-title">Valorizzare i talenti</h3>
+        <p>Piattaforma dedicata agli artisti emergenti per farsi conoscere e trovare opportunità.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-users"></i></div>
+        <h3 class="feature-title">Collaborazioni creative</h3>
+        <p>Incontra altri professionisti e crea progetti musicali innovativi.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+        <h3 class="feature-title">Connettere business</h3>
+        <p>Il ponte perfetto tra creatività musicale e opportunità commerciali.</p>
+      </div>
+    </div>
 
     <h2>Come funziona</h2>
     <ul>
-      <li>Crea un profilo con bio, audio/video e competenze</li>
-      <li>Scopri utenti e eventi intorno a te</li>
-      <li>Contatta, collabora, crea</li>
+      <li><strong>Profilo completo:</strong> Crea un profilo con bio, audio/video demo e competenze specifiche</li>
+      <li><strong>Geolocalizzazione:</strong> Scopri utenti, studi ed eventi musicali nella tua zona</li>
+      <li><strong>Connetti e crea:</strong> Contatta direttamente, collabora in tempo reale e crea progetti</li>
     </ul>
 
-    <h2>Funzionalità Principali</h2>
-    <ul>
-      <li>Geolocalizzazione con mappa</li>
-      <li>Matchmaking tra utenti</li>
-      <li>Chat e profili professionali</li>
-      <li>Marketplace e servizi musicali</li>
-      <li>Eventi sincronizzati (anche con Eventbrite)</li>
-    </ul>
-
-    <h2>Categorie</h2>
-    <ul>
-      <li>Beat Maker</li>
-      <li>Artisti</li>
-      <li>Videomaker / Fotografi</li>
-      <li>Studi Musicali</li>
-      <li>Manager e Talent Scout</li>
-    </ul>
-
-    <h2>Perché scegliere I AM MUSIC?</h2>
-    <ul>
-      <li>Innovazione unica con geolocalizzazione</li>
-      <li>Focus sulla community e il talento locale</li>
-      <li>Opportunità concrete per emergere</li>
-    </ul>
-
-    <h2>Timeline</h2>
-    <p>Lancio Beta previsto per Agosto 2025</p>
-
-    <h2>FAQ</h2>
-    <ul>
-      <li><strong>È gratuita?</strong> Sì, con funzioni avanzate opzionali.</li>
-      <li><strong>Come trovo collaboratori?</strong> Con la mappa e il sistema di match intelligente.</li>
-    </ul>
-
-    <div class="countdown">
-      Countdown al lancio: <span id="timer"></span>
+    <h2>Funzionalità Avanzate</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
+        <h3 class="feature-title">Mappa musicale</h3>
+        <p>Geolocalizzazione avanzata con filtri per genere, strumento e competenze.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-heart"></i></div>
+        <h3 class="feature-title">Match intelligente</h3>
+        <p>Algoritmi che suggeriscono collaborazioni perfette per il tuo stile.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-comments"></i></div>
+        <h3 class="feature-title">Chat integrata</h3>
+        <p>Comunica in tempo reale con condivisione file audio e progetti.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-store"></i></div>
+        <h3 class="feature-title">Marketplace</h3>
+        <p>Vendi servizi musicali o trova professionisti per il tuo progetto.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3 class="feature-title">Eventi live</h3>
+        <p>Scopri e partecipa a eventi musicali nella tua città.</p>
+      </div>
     </div>
 
-    <a class="btn" href="#">Scarica l'app (Presto disponibile)</a>
+    <h2>Per chi è I AM MUSIC?</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-drum"></i></div>
+        <h3 class="feature-title">Beat Maker</h3>
+        <p>Trova artisti per le tue produzioni o collabora con altri producer.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-microphone"></i></div>
+        <h3 class="feature-title">Artisti</h3>
+        <p>Connettiti con musicisti, tecnici e professionisti del settore.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-video"></i></div>
+        <h3 class="feature-title">Videomaker</h3>
+        <p>Collabora con artisti per video musicali e contenuti creativi.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-compact-disc"></i></div>
+        <h3 class="feature-title">Studi Musicali</h3>
+        <p>Fatti trovare da nuovi clienti e promuovi i tuoi servizi.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+        <h3 class="feature-title">Manager</h3>
+        <p>Scopri nuovi talenti e connettiti con professionisti del settore.</p>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <div class="countdown-title">LANCIO DELLA PIATTAFORMA</div>
+      <div class="timer">
+        <div class="timer-segment">
+          <div class="timer-number" id="days">00</div>
+          <div class="timer-label">Giorni</div>
+        </div>
+        <div class="timer-segment">
+          <div class="timer-number" id="hours">00</div>
+          <div class="timer-label">Ore</div>
+        </div>
+        <div class="timer-segment">
+          <div class="timer-number" id="minutes">00</div>
+          <div class="timer-label">Minuti</div>
+        </div>
+        <div class="timer-segment">
+          <div class="timer-number" id="seconds">00</div>
+          <div class="timer-label">Secondi</div>
+        </div>
+      </div>
+    </div>
+
+    <a class="btn" href="#">
+      <i class="fas fa-download" style="margin-right: 10px;"></i> Scarica l'app (Presto disponibile)
+    </a>
   </section>
 
-  <section data-lang="en">
+  <section data-lang="en" class="reveal">
     <h2>Vision</h2>
-    <p>Create a platform that connects music professionals simply, quickly, and by location.</p>
-
-    <h2>Mission</h2>
-    <ul>
-      <li>Empower emerging talent</li>
-      <li>Enable creative collaborations</li>
-      <li>Bridge business and music</li>
-    </ul>
-
-    <h2>How it works</h2>
-    <ul>
-      <li>Create a profile with bio, audio/video and skills</li>
-      <li>Find users and events nearby</li>
-      <li>Connect, collaborate, create</li>
-    </ul>
-
-    <h2>Main Features</h2>
-    <ul>
-      <li>Geolocation-based map</li>
-      <li>User matchmaking</li>
-      <li>Professional profiles and chat</li>
-      <li>Marketplace and services</li>
-      <li>Integrated events (Eventbrite too)</li>
-    </ul>
-
-    <h2>Categories</h2>
-    <ul>
-      <li>Beat Makers</li>
-      <li>Artists</li>
-      <li>Videomakers / Photographers</li>
-      <li>Studios</li>
-      <li>Managers and Scouts</li>
-    </ul>
-
-    <h2>Why choose I AM MUSIC?</h2>
-    <ul>
-      <li>Unique innovation with geolocation</li>
-      <li>Focus on community and local talent</li>
-      <li>Real chances to grow</li>
-    </ul>
-
-    <h2>Timeline</h2>
-    <p>Beta Launch: August 2025</p>
-
-    <h2>FAQ</h2>
-    <ul>
-      <li><strong>Is it free?</strong> Yes, with optional pro features.</li>
-      <li><strong>How to find collaborators?</strong> Use our smart map and filter system.</li>
-    </ul>
-
-    <div class="countdown">
-      Launch countdown: <span id="timer"></span>
+    <p>Create a revolutionary platform that connects music professionals simply, quickly, and by location, transforming how the music community collaborates and grows.</p>
+    
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?fit=crop&w=1000&q=80" alt="Music collaboration" class="card-3d" id="parallax-img-en">
     </div>
 
-    <a class="btn" href="#">Download the app (Coming soon)</a>
+    <div class="wave-divider">
+      <div class="wave"></div>
+    </div>
+
+    <h2>Mission</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-star"></i></div>
+        <h3 class="feature-title">Empower Talent</h3>
+        <p>Platform dedicated to emerging artists to get noticed and find opportunities.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-users"></i></div>
+        <h3 class="feature-title">Creative Collaborations</h3>
+        <p>Meet other professionals and create innovative music projects.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+        <h3 class="feature-title">Business Connections</h3>
+        <p>The perfect bridge between musical creativity and commercial opportunities.</p>
+      </div>
+    </div>
+
+    <h2>How It Works</h2>
+    <ul>
+      <li><strong>Complete Profile:</strong> Create a profile with bio, audio/video demo and specific skills</li>
+      <li><strong>Geolocation:</strong> Discover users, studios and music events in your area</li>
+      <li><strong>Connect & Create:</strong> Contact directly, collaborate in real-time and create projects</li>
+    </ul>
+
+    <h2>Advanced Features</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
+        <h3 class="feature-title">Music Map</h3>
+        <p>Advanced geolocation with filters for genre, instrument and skills.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-heart"></i></div>
+        <h3 class="feature-title">Smart Match</h3>
+        <p>Algorithms that suggest perfect collaborations for your style.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-comments"></i></div>
+        <h3 class="feature-title">Integrated Chat</h3>
+        <p>Communicate in real-time with audio file and project sharing.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-store"></i></div>
+        <h3 class="feature-title">Marketplace</h3>
+        <p>Sell music services or find professionals for your project.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3 class="feature-title">Live Events</h3>
+        <p>Discover and attend music events in your city.</p>
+      </div>
+    </div>
+
+    <h2>Who is I AM MUSIC for?</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-drum"></i></div>
+        <h3 class="feature-title">Beat Makers</h3>
+        <p>Find artists for your productions or collaborate with other producers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-microphone"></i></div>
+        <h3 class="feature-title">Artists</h3>
+        <p>Connect with musicians, technicians and industry professionals.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-video"></i></div>
+        <h3 class="feature-title">Videomakers</h3>
+        <p>Collaborate with artists for music videos and creative content.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-compact-disc"></i></div>
+        <h3 class="feature-title">Studios</h3>
+        <p>Get found by new clients and promote your services.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+        <h3 class="feature-title">Managers</h3>
+        <p>Discover new talents and connect with industry professionals.</p>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <div class="countdown-title">PLATFORM LAUNCH</div>
+      <div class="timer">
+        <div class="timer-segment">
+          <div class="timer-number" id="days-en">00</div>
+          <div class="timer-label">Days</div>
+        </div>
+        <div class="timer-segment">
+          <div class="timer-number" id="hours-en">00</div>
+          <div class="timer-label">Hours</div>
+        </div>
+        <div class="timer-segment">
+          <div class="timer-number" id="minutes-en">00</div>
+          <div class="timer-label">Minutes</div>
+        </div>
+        <div class="timer-segment">
+          <div class="timer-number" id="seconds-en">00</div>
+          <div class="timer-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+
+    <a class="btn" href="#">
+      <i class="fas fa-download" style="margin-right: 10px;"></i> Download the App (Coming Soon)
+    </a>
   </section>
 
   <footer>
-    &copy; 2025 I AM MUSIC. Tutti i diritti riservati.<br>
+    <div style="margin-bottom: 1rem;">
+      <a href="#" style="color: var(--primary); margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+      <a href="#" style="color: var(--primary); margin: 0 10px;"><i class="fab fa-facebook"></i></a>
+      <a href="#" style="color: var(--primary); margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+      <a href="#" style="color: var(--primary); margin: 0 10px;"><i class="fab fa-youtube"></i></a>
+    </div>
+    &copy; 2025 I AM MUSIC. All Rights Reserved.<br>
     Creato da <strong>Beyene Cecere</strong> e <strong>Tizazu Paladino</strong> · Programmatore: <strong>Tizazu Paladino</strong>
   </footer>
 
   <script>
+    // Language Toggle
     const btnIT = document.getElementById("btn-it");
     const btnEN = document.getElementById("btn-en");
     const body = document.body;
@@ -311,6 +853,7 @@
       btnIT.classList.remove("active");
     });
 
+    // Countdown Timer
     function updateCountdown() {
       const launchDate = new Date("2025-08-01T00:00:00").getTime();
       const now = new Date().getTime();
@@ -321,17 +864,113 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      const timerEl = document.querySelectorAll("#timer");
-      timerEl.forEach(el => {
-        el.innerHTML = distance > 0
-          ? `${days} giorni ${hours}h ${minutes}m ${seconds}s`
-          : "La beta è live!";
-      });
+      // Italian version
+      document.getElementById("days").textContent = days.toString().padStart(2, '0');
+      document.getElementById("hours").textContent = Math.floor(hours).toString().padStart(2, '0');
+      document.getElementById("minutes").textContent = Math.floor(minutes).toString().padStart(2, '0');
+      document.getElementById("seconds").textContent = Math.floor(seconds).toString().padStart(2, '0');
+
+      // English version
+      document.getElementById("days-en").textContent = days.toString().padStart(2, '0');
+      document.getElementById("hours-en").textContent = Math.floor(hours).toString().padStart(2, '0');
+      document.getElementById("minutes-en").textContent = Math.floor(minutes).toString().padStart(2, '0');
+      document.getElementById("seconds-en").textContent = Math.floor(seconds).toString().padStart(2, '0');
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
-  </script>
 
+    // Create Particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random properties
+        const size = Math.random() * 5 + 1;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 10 + 5;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Create Visualizer Bars
+    function createVisualizer() {
+      const visualizer = document.getElementById('visualizer');
+      const barCount = 50;
+      
+      for (let i = 0; i < barCount; i++) {
+        const bar = document.createElement('div');
+        bar.classList.add('bar');
+        
+        // Random properties
+        const height = Math.random() * 80 + 20;
+        const delay = Math.random() * 1.5;
+        const duration = Math.random() * 1 + 0.5;
+        
+        bar.style.height = `${height}px`;
+        bar.style.animationDelay = `${delay}s`;
+        bar.style.animationDuration = `${duration}s`;
+        
+        visualizer.appendChild(bar);
+      }
+    }
+
+    // Parallax Effect for Images
+    function setupParallax() {
+      const img = document.getElementById('parallax-img');
+      const imgEn = document.getElementById('parallax-img-en');
+      
+      if (img && imgEn) {
+        window.addEventListener('mousemove', (e) => {
+          const x = (window.innerWidth / 2 - e.pageX) / 20;
+          const y = (window.innerHeight / 2 - e.pageY) / 20;
+          
+          img.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+          imgEn.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+      }
+    }
+
+    // Scroll Reveal Animation
+    function setupScrollReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      reveals.forEach(reveal => {
+        observer.observe(reveal);
+      });
+    }
+
+    // Initialize all effects
+    window.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      createVisualizer();
+      setupParallax();
+      setupScrollReveal();
+    });
+  </script>
 </body>
 </html>
