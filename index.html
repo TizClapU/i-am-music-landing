@@ -15,6 +15,7 @@
       --secondary: #1e1e1e;
       --accent: #ff00aa;
       --glow: 0 0 20px rgba(0, 255, 195, 0.5);
+      --card-bg: rgba(30, 30, 30, 0.7);
     }
 
     * {
@@ -71,9 +72,27 @@
       100% { transform: translateY(-20px) translateX(10px); }
     }
 
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+
     header {
       text-align: center;
-      padding: 2rem 0;
+      padding: 3rem 0;
       position: relative;
       overflow: hidden;
     }
@@ -92,7 +111,7 @@
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 4rem;
+      font-size: 4.5rem;
       color: transparent;
       background: linear-gradient(45deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
@@ -114,7 +133,7 @@
       bottom: -1.5rem;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       font-family: 'Montserrat', sans-serif;
       letter-spacing: 3px;
       color: var(--primary);
@@ -132,14 +151,15 @@
       background: none;
       border: 2px solid var(--primary);
       color: var(--primary);
-      padding: 0.5rem 1.5rem;
-      margin: 0 0.5rem;
+      padding: 0.6rem 1.8rem;
+      margin: 0 0.8rem;
       border-radius: 30px;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       font-weight: bold;
       position: relative;
       overflow: hidden;
+      font-size: 1rem;
     }
 
     .lang-toggle button::before {
@@ -165,8 +185,8 @@
     }
 
     section {
-      max-width: 1000px;
-      margin: 3rem auto;
+      max-width: 1200px;
+      margin: 4rem auto;
       padding: 0 2rem;
       position: relative;
     }
@@ -185,15 +205,15 @@
     }
 
     h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
       color: transparent;
       background: linear-gradient(90deg, var(--primary), var(--text));
       -webkit-background-clip: text;
       background-clip: text;
       position: relative;
       display: inline-block;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0.8rem;
     }
 
     h2::after {
@@ -201,10 +221,16 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 50px;
-      height: 3px;
+      width: 70px;
+      height: 4px;
       background: var(--primary);
       border-radius: 3px;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      color: var(--primary);
     }
 
     p {
@@ -220,7 +246,8 @@
     li {
       margin-bottom: 0.8rem;
       position: relative;
-      padding-left: 1.5rem;
+      padding-left: 1.8rem;
+      font-size: 1.1rem;
     }
 
     li::before {
@@ -228,13 +255,14 @@
       position: absolute;
       left: 0;
       color: var(--primary);
+      font-size: 1.2rem;
     }
 
     .btn {
       display: inline-block;
       background: linear-gradient(45deg, var(--primary), var(--primary-dark));
       color: #000;
-      padding: 1.2rem 2.5rem;
+      padding: 1.3rem 3rem;
       font-weight: bold;
       border-radius: 50px;
       text-decoration: none;
@@ -245,10 +273,10 @@
       position: relative;
       overflow: hidden;
       border: none;
-      font-size: 1.1rem;
-      box-shadow: 0 5px 15px rgba(0, 255, 195, 0.3);
+      font-size: 1.2rem;
+      box-shadow: 0 5px 20px rgba(0, 255, 195, 0.4);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
 
     .btn::before {
@@ -258,7 +286,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
       transition: 0.6s;
     }
 
@@ -267,22 +295,22 @@
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 255, 195, 0.5);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 255, 195, 0.6);
     }
 
     .btn:active {
-      transform: translateY(1px);
+      transform: translateY(2px);
     }
 
     footer {
       text-align: center;
       margin-top: 6rem;
-      padding: 3rem 0;
-      font-size: 0.9rem;
+      padding: 4rem 0;
+      font-size: 1rem;
       color: #aaa;
       position: relative;
-      background: rgba(15, 15, 15, 0.8);
+      background: rgba(15, 15, 15, 0.9);
     }
 
     footer::before {
@@ -291,8 +319,8 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 200px;
-      height: 3px;
+      width: 300px;
+      height: 4px;
       background: linear-gradient(90deg, transparent, var(--primary), transparent);
     }
 
@@ -318,115 +346,290 @@
       display: block;
     }
 
-    /* Advanced Image Container with Parallax */
-    .image-container {
-      text-align: center;
-      margin: 3rem 0;
-      position: relative;
-      perspective: 1000px;
-      height: 400px;
+    /* Hero Section */
+    .hero {
+      height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 4rem;
     }
 
-    .image-container img {
-      width: 90%;
-      max-width: 600px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 255, 195, 0.3);
-      transform-style: preserve-3d;
-      transition: transform 0.5s ease;
+    .hero-content {
       position: relative;
       z-index: 2;
+      max-width: 800px;
+      padding: 0 2rem;
     }
 
-    .image-container::after {
-      content: '';
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      color: transparent;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(0, 255, 195, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+    }
+
+    .hero-bg {
       position: absolute;
-      width: 80%;
-      height: 80%;
-      background: radial-gradient(circle, var(--primary), transparent 70%);
-      filter: blur(50px);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
       opacity: 0.3;
       z-index: 1;
-      animation: pulseGlow 4s infinite alternate;
     }
 
-    @keyframes pulseGlow {
-      0% { opacity: 0.2; transform: scale(0.95); }
-      100% { opacity: 0.4; transform: scale(1.05); }
+    /* Professional Roles Section */
+    .roles-section {
+      margin: 6rem auto;
+    }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .role-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      border: 1px solid rgba(0, 255, 195, 0.1);
+    }
+
+    .role-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(0, 255, 195, 0.3);
+    }
+
+    .role-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      z-index: -1;
+      border-radius: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .role-card:hover::before {
+      opacity: 0.3;
+    }
+
+    .role-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .role-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .role-card:hover .role-image img {
+      transform: scale(1.1);
+    }
+
+    .role-content {
+      padding: 1.5rem;
+    }
+
+    .role-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .role-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .role-description {
+      margin-bottom: 1.5rem;
+      color: #ccc;
+    }
+
+    .role-features {
+      margin-top: 1rem;
+    }
+
+    .role-features li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .role-features li::before {
+      content: '•';
+      color: var(--primary);
+      font-size: 1.5rem;
+      line-height: 0;
+    }
+
+    /* Image Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      height: 250px;
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+      color: white;
+      z-index: 2;
+      transition: bottom 0.3s ease;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    }
+
+    .gallery-item:hover .gallery-caption {
+      bottom: 0;
     }
 
     /* Countdown Styles */
     .countdown {
       text-align: center;
-      margin: 3rem 0;
+      margin: 4rem 0;
       position: relative;
     }
 
     .countdown-title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
+      margin-bottom: 2rem;
       color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 3px;
     }
 
     .timer {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .timer-segment {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 80px;
+      min-width: 100px;
     }
 
     .timer-number {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: bold;
       color: var(--primary);
       background: rgba(0, 0, 0, 0.5);
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      margin-bottom: 0.5rem;
+      padding: 1rem 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 0.8rem;
       position: relative;
-      text-shadow: 0 0 10px rgba(0, 255, 195, 0.7);
+      text-shadow: 0 0 15px rgba(0, 255, 195, 0.8);
+      min-width: 90px;
     }
 
     .timer-number::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: -8px;
       left: 50%;
       transform: translateX(-50%);
-      width: 20px;
-      height: 3px;
+      width: 30px;
+      height: 4px;
       background: var(--primary);
-      border-radius: 3px;
+      border-radius: 4px;
     }
 
     .timer-label {
-      font-size: 0.8rem;
+      font-size: 1rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       color: #aaa;
     }
 
     /* Feature Cards */
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      margin: 4rem 0;
     }
 
     .feature-card {
-      background: rgba(30, 30, 30, 0.7);
+      background: var(--card-bg);
       border-radius: 15px;
-      padding: 2rem;
+      padding: 2.5rem 2rem;
       transition: all 0.4s ease;
       border: 1px solid rgba(0, 255, 195, 0.1);
       position: relative;
@@ -453,28 +656,28 @@
 
     .feature-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       border-color: rgba(0, 255, 195, 0.3);
     }
 
     .feature-icon {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: var(--primary);
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .feature-title {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
       color: var(--primary);
     }
 
     /* Animated Wave Divider */
     .wave-divider {
       position: relative;
-      height: 100px;
+      height: 150px;
       overflow: hidden;
-      margin: 4rem 0;
+      margin: 5rem 0;
     }
 
     .wave {
@@ -511,14 +714,92 @@
       transform: translateY(0);
     }
 
+    /* Music Visualizer Effect */
+    .visualizer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 3px;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    .bar {
+      width: 6px;
+      background: var(--primary);
+      border-radius: 3px;
+      animation: equalizer 1.5s infinite ease-in-out;
+      transform-origin: bottom;
+    }
+
+    @keyframes equalizer {
+      0%, 100% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
+    }
+
     /* Responsive Adjustments */
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
       .logo {
+        font-size: 3.5rem;
+      }
+      
+      .roles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 70vh;
+      }
+      
+      .hero h1 {
         font-size: 2.5rem;
       }
       
-      .timer {
-        flex-wrap: wrap;
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .logo {
+        font-size: 2.8rem;
+      }
+      
+      .timer-segment {
+        min-width: 80px;
+      }
+      
+      .timer-number {
+        font-size: 2.5rem;
+        min-width: 70px;
+        padding: 0.8rem 1rem;
+      }
+      
+      h2 {
+        font-size: 2.2rem;
+      }
+      
+      .role-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        height: 60vh;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
       }
       
       .timer-segment {
@@ -527,39 +808,17 @@
       
       .timer-number {
         font-size: 2rem;
+        min-width: 60px;
       }
       
-      h2 {
-        font-size: 2rem;
+      .timer-label {
+        font-size: 0.8rem;
       }
-    }
-
-    /* Music Visualizer Effect */
-    .visualizer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 2px;
-      z-index: -1;
-      opacity: 0.1;
-    }
-
-    .bar {
-      width: 4px;
-      background: var(--primary);
-      border-radius: 2px;
-      animation: equalizer 1.5s infinite ease-in-out;
-      transform-origin: bottom;
-    }
-
-    @keyframes equalizer {
-      0%, 100% { transform: scaleY(0.3); }
-      50% { transform: scaleY(1); }
+      
+      .btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -570,107 +829,169 @@
   <!-- Music Visualizer Effect -->
   <div class="visualizer" id="visualizer"></div>
 
-  <header>
-    <div class="logo">I AM MUSIC</div>
-    <div class="lang-toggle">
-      <button class="active" id="btn-it">IT</button>
-      <button id="btn-en">EN</button>
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="logo">I AM MUSIC</h1>
+      <p data-lang="it">La piattaforma definitiva per connettere i professionisti della musica</p>
+      <p data-lang="en" style="display:none">The ultimate platform to connect music professionals</p>
+      <div class="lang-toggle">
+        <button class="active" id="btn-it">IT</button>
+        <button id="btn-en">EN</button>
+      </div>
     </div>
-  </header>
+  </div>
 
+  <!-- Main Content -->
   <section data-lang="it" class="reveal">
-    <h2>Visione</h2>
-    <p>Creare una piattaforma rivoluzionaria che connetta professionisti musicali in modo semplice, veloce e geolocalizzato, trasformando il modo in cui la comunità musicale collabora e cresce.</p>
-    
-    <div class="image-container">
-      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?fit=crop&w=1000&q=80" alt="Collaborazione musicale" class="card-3d" id="parallax-img">
+    <h2>I Ruoli Professionali</h2>
+    <p>Scopri come I AM MUSIC può rivoluzionare il tuo lavoro nel settore musicale, indipendentemente dal tuo ruolo.</p>
+
+    <div class="roles-grid">
+      <!-- Producer Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Producer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Producer</h3>
+          <p class="role-description">Connettiti con artisti, tecnici e professionisti per creare la tua prossima hit.</p>
+          <ul class="role-features">
+            <li>Trova artisti emergenti</li>
+            <li>Collabora con altri producer</li>
+            <li>Condividi i tuoi progetti</li>
+            <li>Vendi le tue produzioni</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Singer Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Singer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Singer</h3>
+          <p class="role-description">Fatti scoprire, trova collaborazioni e fai crescere la tua carriera.</p>
+          <ul class="role-features">
+            <li>Crea il tuo profilo artistico</li>
+            <li>Connettiti con producer</li>
+            <li>Partecipa a eventi live</li>
+            <li>Espandi il tuo network</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Studio Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Recording Studio">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Studio</h3>
+          <p class="role-description">Fatti trovare da nuovi clienti e massimizza l'utilizzo del tuo studio.</p>
+          <ul class="role-features">
+            <li>Mostra le tue attrezzature</li>
+            <li>Gestisci le prenotazioni</li>
+            <li>Recensioni dei clienti</li>
+            <li>Promuovi offerte speciali</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Videomaker Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Videomaker">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Videomaker</h3>
+          <p class="role-description">Crea video musicali memorabili e collabora con artisti emergenti.</p>
+          <ul class="role-features">
+            <li>Mostra il tuo portfolio</li>
+            <li>Trova artisti interessati</li>
+            <li>Collabora a progetti creativi</li>
+            <li>Amplia la tua clientela</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Photographer Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Photographer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Photographer</h3>
+          <p class="role-description">Scatta immagini iconiche per artisti e progetti musicali.</p>
+          <ul class="role-features">
+            <li>Condividi il tuo stile</li>
+            <li>Connettiti con artisti</li>
+            <li>Partecipa a shooting</li>
+            <li>Crea il tuo portfolio</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Beatmaker Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Beatmaker">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Beatmaker</h3>
+          <p class="role-description">Crea e vendi i tuoi beat agli artisti di tutto il mondo.</p>
+          <ul class="role-features">
+            <li>Marketplace dedicato</li>
+            <li>Licenze personalizzate</li>
+            <li>Statistiche di vendita</li>
+            <li>Collaborazioni dirette</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mastering Engineer Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mastering Engineer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Mastering Engineer</h3>
+          <p class="role-description">Offri i tuoi servizi di mastering a producer e artisti emergenti.</p>
+          <ul class="role-features">
+            <li>Profilo professionale</li>
+            <li>Portfolio audio</li>
+            <li>Recensioni verificate</li>
+            <li>Gestione ordini</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="wave-divider">
       <div class="wave"></div>
     </div>
 
-    <h2>Missione</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-star"></i></div>
-        <h3 class="feature-title">Valorizzare i talenti</h3>
-        <p>Piattaforma dedicata agli artisti emergenti per farsi conoscere e trovare opportunità.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-users"></i></div>
-        <h3 class="feature-title">Collaborazioni creative</h3>
-        <p>Incontra altri professionisti e crea progetti musicali innovativi.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
-        <h3 class="feature-title">Connettere business</h3>
-        <p>Il ponte perfetto tra creatività musicale e opportunità commerciali.</p>
-      </div>
-    </div>
+    <h2>Gallery</h2>
+    <p>Momenti di creatività e collaborazione attraverso I AM MUSIC</p>
 
-    <h2>Come funziona</h2>
-    <ul>
-      <li><strong>Profilo completo:</strong> Crea un profilo con bio, audio/video demo e competenze specifiche</li>
-      <li><strong>Geolocalizzazione:</strong> Scopri utenti, studi ed eventi musicali nella tua zona</li>
-      <li><strong>Connetti e crea:</strong> Contatta direttamente, collabora in tempo reale e crea progetti</li>
-    </ul>
-
-    <h2>Funzionalità Avanzate</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
-        <h3 class="feature-title">Mappa musicale</h3>
-        <p>Geolocalizzazione avanzata con filtri per genere, strumento e competenze.</p>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Recording Session">
+        <div class="gallery-caption">Recording Session</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-heart"></i></div>
-        <h3 class="feature-title">Match intelligente</h3>
-        <p>Algoritmi che suggeriscono collaborazioni perfette per il tuo stile.</p>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Live Performance">
+        <div class="gallery-caption">Live Performance</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-comments"></i></div>
-        <h3 class="feature-title">Chat integrata</h3>
-        <p>Comunica in tempo reale con condivisione file audio e progetti.</p>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Music Video Shoot">
+        <div class="gallery-caption">Music Video Shoot</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-store"></i></div>
-        <h3 class="feature-title">Marketplace</h3>
-        <p>Vendi servizi musicali o trova professionisti per il tuo progetto.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
-        <h3 class="feature-title">Eventi live</h3>
-        <p>Scopri e partecipa a eventi musicali nella tua città.</p>
-      </div>
-    </div>
-
-    <h2>Per chi è I AM MUSIC?</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-drum"></i></div>
-        <h3 class="feature-title">Beat Maker</h3>
-        <p>Trova artisti per le tue produzioni o collabora con altri producer.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-microphone"></i></div>
-        <h3 class="feature-title">Artisti</h3>
-        <p>Connettiti con musicisti, tecnici e professionisti del settore.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-video"></i></div>
-        <h3 class="feature-title">Videomaker</h3>
-        <p>Collabora con artisti per video musicali e contenuti creativi.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-compact-disc"></i></div>
-        <h3 class="feature-title">Studi Musicali</h3>
-        <p>Fatti trovare da nuovi clienti e promuovi i tuoi servizi.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
-        <h3 class="feature-title">Manager</h3>
-        <p>Scopri nuovi talenti e connettiti con professionisti del settore.</p>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Studio Work">
+        <div class="gallery-caption">Studio Work</div>
       </div>
     </div>
 
@@ -701,99 +1022,154 @@
     </a>
   </section>
 
-  <section data-lang="en" class="reveal">
-    <h2>Vision</h2>
-    <p>Create a revolutionary platform that connects music professionals simply, quickly, and by location, transforming how the music community collaborates and grows.</p>
-    
-    <div class="image-container">
-      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?fit=crop&w=1000&q=80" alt="Music collaboration" class="card-3d" id="parallax-img-en">
+  <section data-lang="en" class="reveal" style="display:none">
+    <h2>Professional Roles</h2>
+    <p>Discover how I AM MUSIC can revolutionize your work in the music industry, regardless of your role.</p>
+
+    <div class="roles-grid">
+      <!-- Producer Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Producer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Producer</h3>
+          <p class="role-description">Connect with artists, technicians and professionals to create your next hit.</p>
+          <ul class="role-features">
+            <li>Find emerging artists</li>
+            <li>Collaborate with other producers</li>
+            <li>Share your projects</li>
+            <li>Sell your productions</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Singer Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Singer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Singer</h3>
+          <p class="role-description">Get discovered, find collaborations and grow your career.</p>
+          <ul class="role-features">
+            <li>Create your artist profile</li>
+            <li>Connect with producers</li>
+            <li>Participate in live events</li>
+            <li>Expand your network</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Studio Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Recording Studio">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Studio</h3>
+          <p class="role-description">Get found by new clients and maximize your studio usage.</p>
+          <ul class="role-features">
+            <li>Show your equipment</li>
+            <li>Manage bookings</li>
+            <li>Client reviews</li>
+            <li>Promote special offers</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Videomaker Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Videomaker">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Videomaker</h3>
+          <p class="role-description">Create memorable music videos and collaborate with emerging artists.</p>
+          <ul class="role-features">
+            <li>Show your portfolio</li>
+            <li>Find interested artists</li>
+            <li>Collaborate on creative projects</li>
+            <li>Expand your clientele</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Photographer Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Photographer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Photographer</h3>
+          <p class="role-description">Shoot iconic images for artists and music projects.</p>
+          <ul class="role-features">
+            <li>Share your style</li>
+            <li>Connect with artists</li>
+            <li>Participate in photoshoots</li>
+            <li>Build your portfolio</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Beatmaker Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Beatmaker">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Beatmaker</h3>
+          <p class="role-description">Create and sell your beats to artists worldwide.</p>
+          <ul class="role-features">
+            <li>Dedicated marketplace</li>
+            <li>Custom licenses</li>
+            <li>Sales statistics</li>
+            <li>Direct collaborations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mastering Engineer Card -->
+      <div class="role-card">
+        <div class="role-image">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mastering Engineer">
+        </div>
+        <div class="role-content">
+          <h3 class="role-title">Mastering Engineer</h3>
+          <p class="role-description">Offer your mastering services to producers and emerging artists.</p>
+          <ul class="role-features">
+            <li>Professional profile</li>
+            <li>Audio portfolio</li>
+            <li>Verified reviews</li>
+            <li>Order management</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="wave-divider">
       <div class="wave"></div>
     </div>
 
-    <h2>Mission</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-star"></i></div>
-        <h3 class="feature-title">Empower Talent</h3>
-        <p>Platform dedicated to emerging artists to get noticed and find opportunities.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-users"></i></div>
-        <h3 class="feature-title">Creative Collaborations</h3>
-        <p>Meet other professionals and create innovative music projects.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
-        <h3 class="feature-title">Business Connections</h3>
-        <p>The perfect bridge between musical creativity and commercial opportunities.</p>
-      </div>
-    </div>
+    <h2>Gallery</h2>
+    <p>Moments of creativity and collaboration through I AM MUSIC</p>
 
-    <h2>How It Works</h2>
-    <ul>
-      <li><strong>Complete Profile:</strong> Create a profile with bio, audio/video demo and specific skills</li>
-      <li><strong>Geolocation:</strong> Discover users, studios and music events in your area</li>
-      <li><strong>Connect & Create:</strong> Contact directly, collaborate in real-time and create projects</li>
-    </ul>
-
-    <h2>Advanced Features</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
-        <h3 class="feature-title">Music Map</h3>
-        <p>Advanced geolocation with filters for genre, instrument and skills.</p>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Recording Session">
+        <div class="gallery-caption">Recording Session</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-heart"></i></div>
-        <h3 class="feature-title">Smart Match</h3>
-        <p>Algorithms that suggest perfect collaborations for your style.</p>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Live Performance">
+        <div class="gallery-caption">Live Performance</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-comments"></i></div>
-        <h3 class="feature-title">Integrated Chat</h3>
-        <p>Communicate in real-time with audio file and project sharing.</p>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Music Video Shoot">
+        <div class="gallery-caption">Music Video Shoot</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-store"></i></div>
-        <h3 class="feature-title">Marketplace</h3>
-        <p>Sell music services or find professionals for your project.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
-        <h3 class="feature-title">Live Events</h3>
-        <p>Discover and attend music events in your city.</p>
-      </div>
-    </div>
-
-    <h2>Who is I AM MUSIC for?</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-drum"></i></div>
-        <h3 class="feature-title">Beat Makers</h3>
-        <p>Find artists for your productions or collaborate with other producers.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-microphone"></i></div>
-        <h3 class="feature-title">Artists</h3>
-        <p>Connect with musicians, technicians and industry professionals.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-video"></i></div>
-        <h3 class="feature-title">Videomakers</h3>
-        <p>Collaborate with artists for music videos and creative content.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-compact-disc"></i></div>
-        <h3 class="feature-title">Studios</h3>
-        <p>Get found by new clients and promote your services.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
-        <h3 class="feature-title">Managers</h3>
-        <p>Discover new talents and connect with industry professionals.</p>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Studio Work">
+        <div class="gallery-caption">Studio Work</div>
       </div>
     </div>
 
@@ -825,11 +1201,12 @@
   </section>
 
   <footer>
-    <div style="margin-bottom: 1rem;">
-      <a href="#" style="color: var(--primary); margin: 0 10px;"><i class="fab fa-instagram"></i></a>
-      <a href="#" style="color: var(--primary); margin: 0 10px;"><i class="fab fa-facebook"></i></a>
-      <a href="#" style="color: var(--primary); margin: 0 10px;"><i class="fab fa-twitter"></i></a>
-      <a href="#" style="color: var(--primary); margin: 0 10px;"><i class="fab fa-youtube"></i></a>
+    <div style="margin-bottom: 1.5rem;">
+      <a href="#" style="color: var(--primary); margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+      <a href="#" style="color: var(--primary); margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+      <a href="#" style="color: var(--primary); margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+      <a href="#" style="color: var(--primary); margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+      <a href="#" style="color: var(--primary); margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-tiktok"></i></a>
     </div>
     &copy; 2025 I AM MUSIC. All Rights Reserved.<br>
     Creato da <strong>Beyene Cecere</strong> e <strong>Tizazu Paladino</strong> · Programmatore: <strong>Tizazu Paladino</strong>
@@ -883,18 +1260,19 @@
     // Create Particles
     function createParticles() {
       const particlesContainer = document.getElementById('particles');
-      const particleCount = 50;
+      const particleCount = 80;
       
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         
         // Random properties
-        const size = Math.random() * 5 + 1;
+        const size = Math.random() * 8 + 2;
         const posX = Math.random() * 100;
         const posY = Math.random() * 100;
         const delay = Math.random() * 5;
-        const duration = Math.random() * 10 + 5;
+        const duration = Math.random() * 15 + 5;
+        const color = `hsl(${Math.random() * 60 + 160}, 100%, ${Math.random() * 30 + 50}%)`;
         
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
@@ -902,6 +1280,7 @@
         particle.style.top = `${posY}%`;
         particle.style.animationDelay = `${delay}s`;
         particle.style.animationDuration = `${duration}s`;
+        particle.style.background = color;
         
         particlesContainer.appendChild(particle);
       }
@@ -910,20 +1289,22 @@
     // Create Visualizer Bars
     function createVisualizer() {
       const visualizer = document.getElementById('visualizer');
-      const barCount = 50;
+      const barCount = 60;
       
       for (let i = 0; i < barCount; i++) {
         const bar = document.createElement('div');
         bar.classList.add('bar');
         
         // Random properties
-        const height = Math.random() * 80 + 20;
+        const height = Math.random() * 100 + 20;
         const delay = Math.random() * 1.5;
         const duration = Math.random() * 1 + 0.5;
+        const color = `hsl(${Math.random() * 60 + 160}, 100%, ${Math.random() * 30 + 50}%)`;
         
         bar.style.height = `${height}px`;
         bar.style.animationDelay = `${delay}s`;
         bar.style.animationDuration = `${duration}s`;
+        bar.style.background = color;
         
         visualizer.appendChild(bar);
       }
@@ -964,12 +1345,37 @@
       });
     }
 
+    // Role Card Hover Effect
+    function setupRoleCards() {
+      const roleCards = document.querySelectorAll('.role-card');
+      
+      roleCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const x = e.clientX - card.getBoundingClientRect().left;
+          const y = e.clientY - card.getBoundingClientRect().top;
+          
+          const centerX = card.offsetWidth / 2;
+          const centerY = card.offsetHeight / 2;
+          
+          const angleX = (y - centerY) / 20;
+          const angleY = (centerX - x) / 20;
+          
+          card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+      });
+    }
+
     // Initialize all effects
     window.addEventListener('DOMContentLoaded', () => {
       createParticles();
       createVisualizer();
       setupParallax();
       setupScrollReveal();
+      setupRoleCards();
     });
   </script>
 </body>
